@@ -1,0 +1,229 @@
+/* ========================= */
+/* General Container Styles */
+/* ========================= */
+.workouts-container {
+    text-align: center;
+    min-height: 100vh;
+    align-items: center;
+    padding-top: 20px; /* Keep vertical padding */
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* ========================= */
+/* Filter Buttons */
+/* ========================= */
+.filter-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .filter-container::-webkit-scrollbar {
+    display: none; /* hide scroll bar on mobile */
+  }
+  
+  .filter-pill {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    background: var(--color-mint);
+    color: var(--color-dark);
+    font-size: 16px;
+  }
+
+  .filter-pill.active {
+    background: var(--color-dark);
+    color: var(--color-white);
+  }
+
+/* ========================= */
+/* Workout List Styles */
+/* ========================= */
+.workouts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.workout-details {
+    font-size: 12px;
+    margin: 6px 0 12px 0;
+}
+
+/* Workout Item */
+.workout-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    background: var(--color-white);
+}
+
+.workout-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Workout Icon */
+.workout-icon {
+    color: black;
+}
+
+/* Workout Info */
+.workout-info {
+    flex: 1;
+}
+
+.start-workout-wrapper {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .start-workout-btn {
+    background: var(--color-dark);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .start-workout-btn:hover {
+    background: var(--color-forrest);
+  }
+  
+
+/* ========================= */
+/* Progress Bar Styles */
+/* ========================= */
+.progress-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--color-mint);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-dark);
+    transition: width 0.5s ease-in-out;
+}
+
+/* Check Icon */
+.check-icon {
+    font-size: 18px;
+    color :var(--color-dark);
+    margin-left: 10px;
+}
+
+/* ========================= */
+/* Workout Details Bottom Sheet */
+/* ========================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Light blur effect */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* ========================= */
+/* Workout Bottom Sheet (Drawer) */
+/* ========================= */
+.workout-bottom-sheet {
+    width: 100%;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px 0 100px 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    touch-action: none;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Drag Handle */
+.workout-bottom-sheet::before {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background: gray;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-gray);
+}
+
+.close-btn:hover {
+    color: var(--color-dark);
+}
+
+.start-workout-wrapper {
+    position: fixed;
+    bottom: 95px; /* Adjust based on your BottomNav height */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    padding: 16px 0px;
+    background: var(--color-mint);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .start-workout-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-dark);
+    color: white;
+    cursor: pointer;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  }
+  

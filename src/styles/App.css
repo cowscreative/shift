@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --color-lime:   #BCF246;
+  --color-mint:   #DBF4D7;
+  --color-dark:   #192026;
+  --color-white:   #fff;
+  --color-grey: #F7F6FB;
+
+  --background:   var(--color-grey);
+  --text:         var(--color-dark);
+  --primary:      var(--color-rich);
+  --accent:       var(--color-lime);
+
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+}
+
+body.dark {
+  --background:   var(--color-dark);
+  --text:         var(--color-lime);
+  --primary:      var(--color-dark);
+  --accent:       var(--color-mint);
+}
+
+/* ============================= */
+/* ✅ GLOBAL STYLES */
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+.container {
+  min-height: calc(100vh);
+  padding: 100px 20px 120px 20px;
+  text-align: center;
+  background-color: var(--color-grey);
+}
+
+/* ============================= */
+/* ✅ HEADER */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0px;
+  box-shadow: 0 2px 10px var(--color-mint);
+  background: var(--color-lime);
+  z-index: 1000;
+  height: 60px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.header-btn:active {
+  opacity: 0.7;
+}
+
+.settings-btn {
+  color: var(--color-dark);
+  padding: 0 24px 0 0;
+}
+
+.app-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-placeholder {
+  width: 24px;
+}
+
+/* ============================= */
+/* ✅ NAVIGATION */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid var(--color-mint);
+  padding-bottom: 40px;
+}
+
+.nav-item.active {
+  color: black;
+  font-weight: bold;
+}
+
+/* ============================= */
+/* ✅ INTERACTIONS */
+.profile-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* ============================= */
+/* ✅ DARK MODE */
+body.dark, body.dark .nav-item {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+body.dark .app-header {
+  background: var(--color-dark);
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-mint);
+}
+
+body.dark .settings-btn,
+body.dark .app-logo,
+body.dark .header-btn {
+  color: var(--color-white);
+}
+
+body.dark input:checked + .toggle-slider, body.dark .nav-item.active::after, body.dark .app-button {
+  background:var(--color-mint);
+  color: var(--color-dark);
+}
+
+body.dark .bottom-nav, body.dark .settings-container,
+body.dark .workouts-container,
+body.dark .stats-container,body.dark .profile-container, body.dark .container, body.dark .toggle-slider::before, body.dark .workout-bottom-sheet  {
+  background:var(--color-dark);
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark .nav-item.active, 
+body.dark .home-header p {
+  color: var(--color-white);
+}
+
+body.dark .filter-pill.active,
+body.dark .filter-pill, body.dark .workout-card h2, body.dark .daily-challenge h2, body.dark .stat-card h2, body.dark .stat-card, body.dark .stats-card   {
+  color:var(--color-dark);
+}
+body.dark .filter-pill.active, 
+body.dark .streak-icon{
+  color: var(--color-white);
+}
+body.dark .stats-card h2,
+body.dark .workout-info h3, body.dark .workout-item h2, body.dark .workout-item p{
+  color: var(--color-dark);
+}

@@ -1,0 +1,106 @@
+/* Container */
+.session-container {
+    padding: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  /* Heading */
+  .session-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Exercise Section */
+  .session-exercise {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .session-exercise h3 {
+    font-size: 42px;
+    margin-bottom: 6px;
+    color: var(--color-dark);
+  }
+  
+  /* Set Row */
+  .session-set {
+    margin-bottom: 16px;
+  }
+  
+  .session-set-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--color-dark);
+  }
+
+  body.dark .session-set-label {
+    color: var(--color-white);
+  }
+  
+  .session-set-fields {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .input-field {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fff;
+  }
+  
+  .checkbox-field {
+    width: 24px;
+    height: 24px;
+    accent-color: var(--color-dark);
+    flex-shrink: 0;
+    transform: scale(1.3);
+    cursor: pointer;
+  }  
+
+  /* Save Button (Sticky) */
+  .save-btn {
+    position: fixed;
+    bottom: 95px;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    background: var(--color-dark);
+    color: white;
+    z-index: 999;
+  }
+  
+  /* Dark Mode */
+  body.dark .session-exercise {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  body.dark .input-field {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+  }
+  
+  body.dark .input-field::placeholder {
+    color: #aaa;
+  }
+  
+  body.dark .save-btn {
+    background: var(--color-lime);
+    color: black;
+  }
+  
