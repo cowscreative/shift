@@ -39,3 +39,57 @@ export function getMessagesBetween(user1, user2) {
 export function getUserEvents(userId) {
   return events.filter(e => e.attendees.includes(userId));
 }
+
+export function getFilteredEvents({ filter = "all", selectedDate = null }) {
+    const now = new Date();
+    const all = getUpcomingEvents().filter(e => new Date(e.date) >= now);
+  
+    const tagFiltered = filter === "all" ? all : all.filter(e => e.tags.includes(filter));
+  
+    const dateFiltered = selectedDate
+      ? tagFiltered.filter(e =>
+          new Date(e.date).toDateString() === selectedDate.toDateString()
+        )
+      : tagFiltered;
+  
+    return dateFiltered;
+  }
+
+  // src/utils/fetchEventsFromCSV.js
+export async function fetchEventsFromCSV() {
+  const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ47wjQVQnTTQmUnVWG-lkKt8hnbh88umNtL73uKas8GP1MfaWloLpmFS6wtUmnG9hpFd9xubqKHMMw/pub?output=csv";
+  const res = await fetch(url);
+  const text = await res.text();
+  const rows = text.split("\n").slice(1).filter(Boolean); // skip header
+  return rows.map((row, idx) => {
+    const [
+      date, title, url, image, venue, address, time, start, end,
+      attendees, upvotes, category, tickets, byline, series
+    ] = row.split(",");
+
+    return {
+      id: `event_${idx}`,
+      date: new Date(date).toISOString(),
+      title,
+      url,
+      image,
+      location: {
+        name: venue,
+        address,
+      },
+      time,
+      start,
+      end,
+      attendees: attendees?.split(";") || [],
+      upvotes: parseInt(upvotes) || 0,
+      category: category?.toLowerCase() || "casual",
+      tags: [category?.toLowerCase() || "casual"],
+      tickets,
+      byline,
+      series,
+      description: byline || "", // temp
+    };
+  });
+}
+
+  

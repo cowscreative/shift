@@ -70,7 +70,7 @@
   .browse-card {
     background: white;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: .5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     border: 1px solid #f2f2f2;
     transition: 0.2s ease;
@@ -107,9 +107,14 @@
   
   .browse-info p {
     margin: 0.3rem 0;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color:var(--color-dark);
     line-height: 1.4;
+    text-align: left;
+  }
+  .browse-info p.extra-info {
+    font-size: .65em;
+    margin: 6px 0 12px 0;
   }
   
   .tag-group {
@@ -120,7 +125,7 @@
   }
   
   .tag {
-    font-size: 0.65rem;
+    font-size: 0.5rem;
     background: var(--color-mint);
     color: var(--color-dark);
     padding: 0.2rem 0.5rem;

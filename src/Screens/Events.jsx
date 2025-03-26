@@ -1,11 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { getUpcomingEvents } from "../data/dbUtils";
+import { events as allEvents } from "../data/updatedEvents"; // use your new local file
 import EventCard from "../Components/EventCard";
 import EventDrawer from "../Screens/EventDrawer";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaCalendarAlt, FaRedo } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
 import "../styles/Events.css";
 
 function Events() {
@@ -20,16 +19,16 @@ function Events() {
   const calendarRef = useRef(null);
 
   useEffect(() => {
-    const all = getUpcomingEvents();
-    const tagFiltered = filter === "all" ? all : all.filter(e => e.tags.includes(filter));
-
-    const dateFiltered = selectedDate
-      ? tagFiltered.filter(e =>
-          new Date(e.date).toDateString() === selectedDate.toDateString()
-        )
-      : tagFiltered;
-
-    setEvents(dateFiltered);
+    const filtered = allEvents.filter((event) => {
+      const eventDate = new Date(event.date).toDateString();
+      const matchFilter =
+        filter === "all" || event.tags?.includes(filter) || event.category === filter;
+      const matchDate =
+        !selectedDate ||
+        new Date(event.date).toDateString() === selectedDate.toDateString();
+      return matchFilter && matchDate;
+    });
+    setEvents(filtered);
   }, [filter, selectedDate]);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ function Events() {
 
   const toggleCheckin = (eventId) => {
     const updated = checkedInIds.includes(eventId)
-      ? checkedInIds.filter(id => id !== eventId)
+      ? checkedInIds.filter((id) => id !== eventId)
       : [...checkedInIds, eventId];
 
     setCheckedInIds(updated);
@@ -58,70 +57,72 @@ function Events() {
   };
 
   const highlightDatesSet = new Set(
-    getUpcomingEvents().map((e) => new Date(e.date).toDateString())
+    allEvents
+      .filter((e) => new Date(e.date) >= new Date())
+      .map((e) => new Date(e.date).toDateString())
   );
 
   const getHighlightDates = () => {
-    return getUpcomingEvents().map((e) => new Date(e.date));
+    return allEvents
+      .filter((e) => new Date(e.date) >= new Date())
+      .map((e) => new Date(e.date));
   };
 
   return (
-    <motion.div className="events-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+    <div className="events-container">
       <div className="events-title-row">
         <h1 className="events-title">🎉 All Events</h1>
         <div className="events-icons-wrapper">
-          <button className="calendar-toggle" onClick={() => setShowCalendar(!showCalendar)}>
+          <button
+            className="calendar-toggle"
+            onClick={() => setShowCalendar(!showCalendar)}
+          >
             <FaCalendarAlt />
           </button>
           <button className="reset-toggle" onClick={resetFilters}>
             <FaRedo />
           </button>
 
-          <AnimatePresence>
-            {showCalendar && (
-              <motion.div
-                className="calendar-popover"
-                ref={calendarRef}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-              >
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                  placeholderText="Pick a date"
-                  className="date-input"
-                  isClearable
-                  inline
-                  highlightDates={getHighlightDates()}
-                  dayClassName={(date) =>
-                    highlightDatesSet.has(date.toDateString()) ? "highlighted-day" : undefined
-                  }
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {showCalendar && (
+            <div className="calendar-popover" ref={calendarRef}>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                placeholderText="Pick a date"
+                className="date-input"
+                isClearable
+                inline
+                highlightDates={getHighlightDates()}
+                dayClassName={(date) =>
+                  highlightDatesSet.has(date.toDateString())
+                    ? "highlighted-day"
+                    : undefined
+                }
+              />
+            </div>
+          )}
         </div>
       </div>
 
-      <motion.div className="event-tags" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-        {["all", "music", "outdoors", "casual", "social", "creative"].map(tag => (
-          <button
-            key={tag}
-            className={`filter-tag ${filter === tag ? "active" : ""}`}
-            onClick={() => setFilter(tag)}
-          >
-            {tag}
-          </button>
-        ))}
-      </motion.div>
+      <div className="event-tags">
+        {["all", "comedy", "live-music", "dj-s-parties", "food-drink", "fitness-health", "drag", "free", "exhibit", "sports-activities", "community-local", "variety-other", "lgbtq"].map(
+          (tag) => (
+            <button
+              key={tag}
+              className={`filter-tag ${filter === tag ? "active" : ""}`}
+              onClick={() => setFilter(tag)}
+            >
+              {tag}
+            </button>
+          )
+        )}
+      </div>
 
-      <motion.div className="event-list" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+      <div className="event-list">
         {events.length === 0 ? (
           <p className="no-events">No events match your filters.</p>
         ) : (
-          events.map(event => (
+          events.map((event) => (
             <EventCard
               key={event.id}
               event={event}
@@ -130,7 +131,7 @@ function Events() {
             />
           ))
         )}
-      </motion.div>
+      </div>
 
       {eventDrawer && (
         <EventDrawer
@@ -140,7 +141,7 @@ function Events() {
           onClose={() => setEventDrawer(null)}
         />
       )}
-    </motion.div>
+    </div>
   );
 }
 

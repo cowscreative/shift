@@ -155,6 +155,11 @@ body.dark .home-header p {
   color: var(--color-white);
 }
 
+body.dark .match-card h2, body.dark .event-card h3 {
+  color: var(--color-dark);
+}
+
+
 
 /*event styling*/
 

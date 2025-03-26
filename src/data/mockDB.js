@@ -1018,127 +1018,225 @@
       read: false
     }
   ];
+
   export const events = [
-  {
-    id: "event_001",
-    title: "Live Music at Zilker",
-    description: "An outdoor concert under the stars featuring local acoustic bands.",
-    location: { name: "Zilker Park", lat: 30.266666, lng: -97.73333 },
-    image: "https://placehold.co/150",
-    date: "2025-04-10T19:00:00",
-    tags: ["music", "outdoors", "social"],
-    capacity: 120,
-    attendees: ["user_alex", "user_quinn"],
-    createdBy: "user_jamie"
-  },
-  {
-    id: "event_002",
-    title: "Singles Coffee Social",
-    description: "A cozy morning hangout for coffee lovers and casual chats.",
-    location: { name: "Cosmic Coffee", lat: 30.2301, lng: -97.7544 },
-    image: "https://placehold.co/150",
-    date: "2025-04-11T10:00:00",
-    tags: ["coffee", "casual", "social"],
-    capacity: 60,
-    attendees: ["user_gibson", "user_casey", "user_morgan"],
-    createdBy: "user_casey"
-  },
-  {
-    id: "event_003",
-    title: "Art & Wine Night",
-    description: "Sip wine and paint something meaningful at our guided creative mixer.",
-    location: { name: "ArtHouse Studio", lat: 30.265, lng: -97.742 },
-    image: "https://placehold.co/150",
-    date: "2025-04-12T18:30:00",
-    tags: ["art", "creative", "social"],
-    capacity: 40,
-    attendees: ["user_jordan", "user_reese"],
-    createdBy: "user_alex"
-  },
-  {
-    id: "event_004",
-    title: "Rooftop Sunset Mixer",
-    description: "Drinks, DJ, and new connections — all with skyline views.",
-    location: { name: "The Sunset Lounge", lat: 30.276, lng: -97.741 },
-    image: "https://placehold.co/150",
-    date: "2025-04-13T19:00:00",
-    tags: ["music", "social", "casual"],
-    capacity: 100,
-    attendees: ["user_taylor", "user_skyler", "user_jamie"],
-    createdBy: "user_quinn"
-  },
-  {
-    id: "event_005",
-    title: "Hike + Hang at Barton Creek",
-    description: "Explore scenic trails with a chill group and post-hike snacks.",
-    location: { name: "Barton Creek Greenbelt", lat: 30.256, lng: -97.769 },
-    image: "https://placehold.co/150",
-    date: "2025-04-14T09:00:00",
-    tags: ["outdoors", "hiking", "social"],
-    capacity: 30,
-    attendees: ["user_alex", "user_casey"],
-    createdBy: "user_gibson"
-  },
-  {
-    id: "event_006",
-    title: "Trivia Night: Couples Edition",
-    description: "Team up with someone new and test your random knowledge.",
-    location: { name: "The Highball", lat: 30.247, lng: -97.769 },
-    image: "https://placehold.co/150",
-    date: "2025-04-14T20:00:00",
-    tags: ["creative", "social", "casual"],
-    capacity: 80,
-    attendees: ["user_morgan", "user_jordan"],
-    createdBy: "user_reese"
-  },
-  {
-    id: "event_007",
-    title: "Speed Friending + Games",
-    description: "Fast-paced connections with icebreakers, games, and laughs.",
-    location: { name: "Radio Coffee & Beer", lat: 30.216, lng: -97.790 },
-    image: "https://placehold.co/150",
-    date: "2025-04-15T18:00:00",
-    tags: ["casual", "social", "games"],
-    capacity: 50,
-    attendees: ["user_casey", "user_morgan", "user_gibson"],
-    createdBy: "user_skyler"
-  },
-  {
-    id: "event_008",
-    title: "Open Mic & Mingle",
-    description: "Share your voice or cheer others on — all vibes welcome.",
-    location: { name: "Native Hostel", lat: 30.264, lng: -97.733 },
-    image: "https://placehold.co/150",
-    date: "2025-04-16T19:30:00",
-    tags: ["music", "creative", "social"],
-    capacity: 60,
-    attendees: ["user_alex", "user_quinn", "user_jamie"],
-    createdBy: "user_taylor"
-  },
-  {
-    id: "event_009",
-    title: "Picnic & Polaroids",
-    description: "Bring a blanket, grab snacks, and make new memories together.",
-    location: { name: "Pease Park", lat: 30.282, lng: -97.751 },
-    image: "https://placehold.co/150",
-    date: "2025-04-17T17:00:00",
-    tags: ["outdoors", "casual", "photography"],
-    capacity: 40,
-    attendees: ["user_skyler", "user_gibson"],
-    createdBy: "user_jamie"
-  },
-  {
-    id: "event_010",
-    title: "Board Games & Chill",
-    description: "Play classic games, meet new people, and maybe find a connection.",
-    location: { name: "Emerald Tavern", lat: 30.333, lng: -97.715 },
-    image: "https://placehold.co/150",
-    date: "2025-04-18T18:00:00",
-    tags: ["casual", "creative", "games"],
-    capacity: 30,
-    attendees: ["user_reese", "user_quinn"],
-    createdBy: "user_taylor"
-  }
-];
+    {
+      id: "event_100",
+      title: "Bill Murray & His Blood Brothers (Night Two)",
+      description: "Join us for Bill Murray & His Blood Brothers (Night Two) at Paramount Theatre — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Paramount Theatre", lat: 30.222234, lng: -97.757032 },
+      image: "https://placehold.co/150",
+      date: "2025-03-26T19:00:00",
+      tags: ["music"],
+      capacity: 40,
+      attendees: ["user_quinn", "user_skyler", "user_gibson"],
+      createdBy: "user_alex"
+    },
+    {
+      id: "event_101",
+      title: "FREE FUNK! Wednesdays w/ Henry Invisible",
+      description: "Join us for FREE FUNK! Wednesdays w/ Henry Invisible at The Far Out Lounge — a fun event to meet people and enjoy the vibes.",
+      location: { name: "The Far Out Lounge", lat: 30.258131, lng: -97.738336 },
+      image: "https://placehold.co/150",
+      date: "2025-03-26T19:00:00",
+      tags: ["social"],
+      capacity: 80,
+      attendees: ["user_jamie", "user_skyler", "user_jordan", "user_alex"],
+      createdBy: "user_casey"
+    },
+    {
+      id: "event_102",
+      title: "Destroy Boys w/ Farmer’s Wife",
+      description: "Join us for Destroy Boys w/ Farmer’s Wife at Mohawk Austin — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Mohawk Austin", lat: 30.205012, lng: -97.752035 },
+      image: "https://placehold.co/150",
+      date: "2025-03-26T19:00:00",
+      tags: ["creative"],
+      capacity: 120,
+      attendees: ["user_reese", "user_gibson"],
+      createdBy: "user_casey"
+    },
+    {
+      id: "event_105",
+      title: "PGRAPH",
+      description: "Join us for PGRAPH at The Hideout Theatre — a fun event to meet people and enjoy the vibes.",
+      location: { name: "The Hideout Theatre", lat: 30.338969, lng: -97.734453 },
+      image: "https://placehold.co/150",
+      date: "2025-03-27T20:00:00",
+      tags: ["creative"],
+      capacity: 80,
+      attendees: ["user_gibson", "user_jordan", "user_alex"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_106",
+      title: "Les Arts Florissants - Vivaldi's Four Seasons",
+      description: "Join us for Les Arts Florissants - Vivaldi's Four Seasons at Bates Recital Hall — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Bates Recital Hall", lat: 30.220791, lng: -97.740112 },
+      image: "https://placehold.co/150",
+      date: "2025-03-27T19:30:00",
+      tags: ["music"],
+      capacity: 120,
+      attendees: ["user_taylor", "user_skyler", "user_alex", "user_jamie"],
+      createdBy: "user_casey"
+    },
+    {
+      id: "event_107",
+      title: "DtMf: A Bad Bunny Tribute Nite",
+      description: "Join us for DtMf: A Bad Bunny Tribute Nite at Hotel Vegas — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Hotel Vegas", lat: 30.325548, lng: -97.722937 },
+      image: "https://placehold.co/150",
+      date: "2025-03-27T22:00:00",
+      tags: ["casual"],
+      capacity: 100,
+      attendees: ["user_casey", "user_quinn", "user_jamie", "user_morgan"],
+      createdBy: "user_alex"
+    },
+    {
+      id: "event_110",
+      title: "MotoGP Grand Prix",
+      description: "Join us for MotoGP Grand Prix at Circuit of the Americas — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Circuit of the Americas", lat: 30.211252, lng: -97.72558 },
+      image: "https://placehold.co/150",
+      date: "2025-03-28T08:00:00",
+      tags: ["outdoors"],
+      capacity: 120,
+      attendees: ["user_gibson", "user_skyler", "user_casey", "user_jordan", "user_jamie"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_111",
+      title: "Free Throw w/ Ben Quad",
+      description: "Join us for Free Throw w/ Ben Quad at Mohawk Austin — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Mohawk Austin", lat: 30.33065, lng: -97.702498 },
+      image: "https://placehold.co/150",
+      date: "2025-03-28T19:00:00",
+      tags: ["music"],
+      capacity: 80,
+      attendees: ["user_reese", "user_quinn", "user_jamie"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_112",
+      title: "Comedy & Caviar",
+      description: "Join us for Comedy & Caviar at Fairmont Austin — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Fairmont Austin", lat: 30.218009, lng: -97.789003 },
+      image: "https://placehold.co/150",
+      date: "2025-03-28T21:00:00",
+      tags: ["comedy"],
+      capacity: 120,
+      attendees: ["user_taylor", "user_gibson", "user_quinn"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_115",
+      title: "Crime Junkie: Life Rule #10 Tour",
+      description: "Join us for Crime Junkie: Life Rule #10 Tour at H-E-B Center — a fun event to meet people and enjoy the vibes.",
+      location: { name: "H-E-B Center", lat: 30.23711, lng: -97.782525 },
+      image: "https://placehold.co/150",
+      date: "2025-03-29T18:30:00",
+      tags: ["creative"],
+      capacity: 60,
+      attendees: ["user_jordan", "user_jamie"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_116",
+      title: "North Loop Pop-Up Market",
+      description: "Join us for North Loop Pop-Up Market at Beard Brand — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Beard Brand", lat: 30.230791, lng: -97.708376 },
+      image: "https://placehold.co/150",
+      date: "2025-03-29T10:00:00",
+      tags: ["casual"],
+      capacity: 80,
+      attendees: ["user_morgan", "user_casey"],
+      createdBy: "user_quinn"
+    },
+    {
+      id: "event_117",
+      title: "Houndmouth",
+      description: "Join us for Houndmouth at Stubb's — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Stubb's", lat: 30.24959, lng: -97.734678 },
+      image: "https://placehold.co/150",
+      date: "2025-03-29T19:00:00",
+      tags: ["music"],
+      capacity: 40,
+      attendees: ["user_taylor", "user_gibson", "user_reese", "user_skyler", "user_alex"],
+      createdBy: "user_casey"
+    },
+    {
+      id: "event_118",
+      title: "FREE Crawfish Boil + DJ Da Beatnik",
+      description: "Join us for FREE Crawfish Boil + DJ Da Beatnik at Hotel Vegas — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Hotel Vegas", lat: 30.32284, lng: -97.718034 },
+      image: "https://placehold.co/150",
+      date: "2025-03-29T14:00:00",
+      tags: ["social"],
+      capacity: 100,
+      attendees: ["user_taylor", "user_gibson"],
+      createdBy: "user_quinn"
+    },
+    {
+      id: "event_120",
+      title: "Anjelah Johnson-Reyes: Family Reunion Tour",
+      description: "Join us for Anjelah Johnson-Reyes: Family Reunion Tour at ACL Live — a fun event to meet people and enjoy the vibes.",
+      location: { name: "ACL Live", lat: 30.228176, lng: -97.714427 },
+      image: "https://placehold.co/150",
+      date: "2025-03-30T19:00:00",
+      tags: ["comedy"],
+      capacity: 60,
+      attendees: ["user_quinn", "user_morgan", "user_alex"],
+      createdBy: "user_quinn"
+    },
+    {
+      id: "event_121",
+      title: "Gospel Brunch: New Soul Invaders",
+      description: "Join us for Gospel Brunch: New Soul Invaders at Stubb's — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Stubb's", lat: 30.212693, lng: -97.720627 },
+      image: "https://placehold.co/150",
+      date: "2025-03-30T10:30:00",
+      tags: ["casual"],
+      capacity: 60,
+      attendees: ["user_jordan", "user_casey", "user_jamie"],
+      createdBy: "user_gibson"
+    },
+    {
+      id: "event_122",
+      title: "Geoff Tate's Operation Mindcrime",
+      description: "Join us for Geoff Tate's Operation Mindcrime at Empire Control Room — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Empire Control Room", lat: 30.298696, lng: -97.710492 },
+      image: "https://placehold.co/150",
+      date: "2025-03-30T19:00:00",
+      tags: ["music"],
+      capacity: 120,
+      attendees: ["user_skyler", "user_morgan", "user_quinn"],
+      createdBy: "user_quinn"
+    },
+    {
+      id: "event_123",
+      title: "Vixens Of Volstead Drag Brunch",
+      description: "Join us for Vixens Of Volstead Drag Brunch at Hotel Vegas — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Hotel Vegas", lat: 30.336508, lng: -97.700698 },
+      image: "https://placehold.co/150",
+      date: "2025-03-30T12:00:00",
+      tags: ["social"],
+      capacity: 120,
+      attendees: ["user_jamie", "user_reese", "user_taylor"],
+      createdBy: "user_alex"
+    },
+    {
+      id: "event_125",
+      title: "AWOLNATION: The Phantom Five Tour",
+      description: "Join us for AWOLNATION: The Phantom Five Tour at Emo's — a fun event to meet people and enjoy the vibes.",
+      location: { name: "Emo's", lat: 30.254873, lng: -97.781562 },
+      image: "https://placehold.co/150",
+      date: "2025-03-31T19:00:00",
+      tags: ["music"],
+      capacity: 60,
+      attendees: ["user_reese", "user_jamie", "user_taylor", "user_gibson"],
+      createdBy: "user_casey"
+    }
+  ];
+  
 
   export const checkins = [];

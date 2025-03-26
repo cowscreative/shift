@@ -98,7 +98,7 @@ function Browse() {
               <img src={user.avatar} alt={user.name} className="browse-avatar" />
               <div className="browse-info">
                 <h2>{user.name}, {user.age}</h2>
-                <p>{user.bio}</p>
+                <p>{/*user.bio*/}</p>
                 <p className="extra-info">
                   {user.neighborhood} • {user.lookingFor}
                 </p>

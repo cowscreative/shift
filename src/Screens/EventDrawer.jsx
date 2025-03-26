@@ -1,4 +1,3 @@
-// src/drawers/EventDrawer.jsx
 import { IoCloseOutline } from "react-icons/io5";
 import "../styles/EventDrawer.css";
 
@@ -20,25 +19,13 @@ function EventDrawer({ event, checkedIn, onCheckin, onClose }) {
           </button>
         </div>
 
-        <img src={event.image} alt={event.title} className="drawer-image" />
+        {event.image && (
+          <img src={event.image} alt={event.title} className="drawer-image" />
+        )}
 
         <div className="drawer-content">
           <h2 className="event-title">{event.title}</h2>
-          <p className="event-date">{formattedDate}</p>
-
-          <div className="tag-group">
-            {event.tags.map((tag) => (
-              <span className="tag" key={tag}>{tag}</span>
-            ))}
-          </div>
-
-          <div className="event-details">
-            <p>{event.description}</p>
-            <ul className="details-list">
-              <li>📍 Location: {event.location.name}</li>
-              <li>👥 Attendees: {event.attendees?.length || 0}</li>
-            </ul>
-          </div>
+          {event.byline && <p className="event-byline">{event.byline}</p>}
 
           <div className="drawer-actions">
             <button
@@ -47,6 +34,38 @@ function EventDrawer({ event, checkedIn, onCheckin, onClose }) {
             >
               {checkedIn ? "✅ Checked In" : "📍 Check In"}
             </button>
+            {event.url && (
+              <a
+                className="event-link"
+                href={event.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Event →
+              </a>
+            )}
+          </div>
+
+          <p className="event-date">{formattedDate}</p>
+          <div className="event-details">
+            <ul className="details-list">
+              {event.venue && <li>📍 Venue: {event.venue}</li>}
+              {event.address && <li>🗺️ Address: {event.address}</li>}
+              {event.attendees && (
+                <li>👥 Attendees: {event.attendees.length}</li>
+              )}
+              {event.tickets && (
+                <li>🎟️ Tickets: {event.tickets}</li>
+              )}
+            </ul>
+            {event.description && <p>{event.description}</p>}
+          </div>
+
+          <div className="tag-group">
+            {event.category && <span className="tag">{event.category}</span>}
+            {event.tags && event.tags.map((tag) => (
+              <span className="tag" key={tag}>{tag}</span>
+            ))}
           </div>
         </div>
       </div>

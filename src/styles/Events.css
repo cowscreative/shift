@@ -99,7 +99,7 @@
   
   .event-info p {
     font-size: 0.8rem;
-    color: var(--color-grey);
+    color: var(--color-dark);
     margin-top: 0.3rem;
     line-height: 1.4;
   }
