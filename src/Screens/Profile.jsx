@@ -6,21 +6,29 @@ import { users } from "../data/mockDB";
 import "../styles/Profile.css";
 
 function Profile() {
-  const currentUser = users.find((u) => u.id === currentUserId);
+  const currentUser = users.find((u) => u.id === currentUserId) || {};
 
   const defaultData = {
-    name: currentUser?.name || "Your Name",
-    bio: currentUser?.bio || "",
-    email: currentUser?.email || "",
-    photo: currentUser?.avatar || ""
+    name: currentUser.name || "Gibson",
+    bio: currentUser.bio || "I love connecting at events and discovering cool new spots.",
+    email: currentUser.email || "gibson@shift.app",
+    photo: currentUser.avatar || "https://i.pravatar.cc/150?u=gibson",
+    age: currentUser.age || 37,
+    neighborhood: currentUser.neighborhood || "Zilker",
+    lookingFor: currentUser.lookingFor || "dating",
   };
 
   const [data, setData] = useState(defaultData);
   const [editing, setEditing] = useState({});
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("darkMode") === "true"
+  );
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("userProfile"));
-    if (saved) setData(saved);
+    const profile = saved && saved.name ? saved : defaultData;
+    setData(profile);
+    localStorage.setItem("userProfile", JSON.stringify(profile));
   }, []);
 
   const updateField = (key, value) => {
@@ -30,10 +38,10 @@ function Profile() {
   };
 
   const toggleDarkMode = () => {
-    const current = localStorage.getItem("darkMode") === "true";
-    const newValue = !current;
+    const newValue = !darkMode;
+    setDarkMode(newValue);
+    document.body.classList.toggle("dark", newValue);
     localStorage.setItem("darkMode", newValue);
-    window.location.reload(); // let App.jsx reapply dark mode
   };
 
   const clearCache = () => {
@@ -88,12 +96,42 @@ function Profile() {
         )}
       </div>
 
+      <div className="profile-field">
+        <span>Age:</span>
+        <input
+          type="number"
+          value={data.age}
+          onChange={(e) => updateField("age", e.target.value)}
+          placeholder="Your age"
+        />
+      </div>
+
+      <div className="profile-field">
+        <span>Neighborhood:</span>
+        <input
+          type="text"
+          value={data.neighborhood}
+          onChange={(e) => updateField("neighborhood", e.target.value)}
+          placeholder="e.g., Zilker"
+        />
+      </div>
+
+      <div className="profile-field">
+        <span>Looking For:</span>
+        <input
+          type="text"
+          value={data.lookingFor}
+          onChange={(e) => updateField("lookingFor", e.target.value)}
+          placeholder="e.g., dating, friends"
+        />
+      </div>
+
       <div className="profile-field toggle-row">
         <span>Dark Mode</span>
         <label className="switch">
           <input
             type="checkbox"
-            checked={localStorage.getItem("darkMode") === "true"}
+            checked={darkMode}
             onChange={toggleDarkMode}
           />
           <span className="slider"></span>

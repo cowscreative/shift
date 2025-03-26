@@ -1,4 +1,3 @@
-// src/Screens/PublicProfileDrawer.jsx
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -20,12 +19,11 @@ function PublicProfileDrawer({ user, onClose, onLikeChange }) {
       updated = saved.filter((id) => id !== user.id);
     } else {
       updated = [...saved, user.id];
-      localStorage.setItem("hasNewLikes", "true"); // 🟢 show dot in nav
+      localStorage.setItem("hasNewLikes", "true");
     }
 
     localStorage.setItem("likedUsers", JSON.stringify(updated));
     setLiked(!liked);
-
     if (onLikeChange) onLikeChange();
   };
 
@@ -41,9 +39,9 @@ function PublicProfileDrawer({ user, onClose, onLikeChange }) {
         <div className="profile-header">
           <img src={user.avatar} alt={user.name} className="drawer-avatar" />
           <div className="header-text">
-            <h2>{user.name}</h2>
+            <h2>{user.name}, {user.age}</h2>
             <p className="gender-subtext">
-              {user.gender} {user.attractedTo && `• likes ${user.attractedTo}`}
+              {user.gender} {user.interestedIn?.length > 0 && `• likes ${user.interestedIn.join(", ")}`}
             </p>
           </div>
           <button className="like-btn" onClick={toggleLike}>
@@ -69,9 +67,9 @@ function PublicProfileDrawer({ user, onClose, onLikeChange }) {
           <div className="section">
             <h3>More Info</h3>
             <ul className="details-list">
-              <li>📍 Based in Austin</li>
+              <li>📍 Lives in {user.neighborhood}</li>
+              <li>🎯 Looking for {user.lookingFor}</li>
               <li>📅 Joined {new Date(user.createdAt).toLocaleDateString()}</li>
-              <li>🎯 Looking to meet new people through events</li>
             </ul>
           </div>
         </div>

@@ -11,15 +11,16 @@
     height: 32px;
     border-radius: 999px;
     object-fit: cover;
-    border: 2px solid #eee;
   }
   
   .greeting {
     font-size: 0.85rem;
-    color: #777;
+    color: var(--color-dark);
     margin: 0;
   }
-  
+  body.dark .greeting {
+    color: var(--color-white);
+  }
   .user-name {
     margin: 0;
     font-size: 1.25rem;
@@ -64,5 +65,16 @@
     margin: 0.25rem 0 0;
     font-size: 0.85rem;
     color: gray;
+  }
+  /* MiniProfile.css */
+.fallback-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--color-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
   }
   

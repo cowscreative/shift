@@ -34,7 +34,7 @@
   .edit-icon {
     font-size: 1.1rem;
     margin-right: 0.5rem;
-    color: #888;
+    color: var(--color-grey);
     vertical-align: middle;
   }
   
@@ -53,7 +53,7 @@
     font-weight: 600;
     font-size: 0.85rem;
     margin-bottom: 0.25rem;
-    color: #666;
+    color: var(--color-dark);
   }
   
   .profile-field div {
@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #333;
+    color: var(--color-dark);
   }
   
   .profile-field input,
@@ -70,8 +70,8 @@
     font-size: 1rem;
     padding: 0.65rem;
     border-radius: 0.75rem;
-    border: 1px solid #ddd;
-    width: 100%;
+    border: 1px solid var(--color-grey);
+    width: auto;
     background: #fafafa;
     transition: border 0.2s ease;
   }
@@ -118,7 +118,7 @@
     position: absolute;
     top: 0; left: 0;
     right: 0; bottom: 0;
-    background-color: #ccc;
+    background-color: var(--color-dark);
     border-radius: 9999px;
     transition: 0.4s;
   }

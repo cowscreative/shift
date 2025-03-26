@@ -14,15 +14,15 @@
     gap: 0.5rem;
     overflow-x: auto;
     padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   
   .filter-tag {
     padding: 0.4rem 1rem;
     border-radius: 999px;
     font-size: 0.85rem;
-    border: 1px solid #ddd;
-    background-color: #f7f7f7;
+    border: 1px solid var(--color-grey);
+    background-color:var(--color-mint);
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -60,7 +60,12 @@
     cursor: pointer;
     padding: 1em;
   }
-  
+  .event-scroll .event-card .event-info, .event-list .event-card .event-info {
+    padding: 0 0 0 1em;
+}
+.event-scroll .event-card {
+    padding: 1em;
+}
   .event-img {
     width: 100px;
     height: 100px;
@@ -71,13 +76,17 @@
   
   .event-info {
     flex-grow: 1;
-    padding: 0 1em;
+    padding: 1em 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }  
 
   .event-title-row {
+    flex-direction: row;
+  }
+
+  .event-list .event-title-row {
     flex-direction: column;
   }
   
@@ -85,26 +94,26 @@
     font-size: 1rem;
     font-weight: 600;
     margin: 0;
-    color: #111;
+    color: var(--color-dark);
   }
   
   .event-info p {
     font-size: 0.8rem;
-    color: #666;
+    color: var(--color-grey);
     margin-top: 0.3rem;
     line-height: 1.4;
   }
   
   .event-info .attendees {
     font-size: 0.75rem;
-    color: #999;
+    color: var(--color-mint);
     margin-top: 0.5rem;
   }
   
   .event-chip {
     display: inline-block;
     background-color: #f3f4f6;
-    color: #444;
+    color: var(--color-grey);
     font-size: 0.7rem;
     padding: 0.3rem 0.6rem;
     border-radius: 999px;
@@ -129,7 +138,7 @@
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    color: #555;
+    color: var(--color-dark);
     padding: 0.3rem;
     transition: transform 0.2s ease, color 0.2s ease;
   }
@@ -138,6 +147,10 @@
   .reset-toggle:hover {
     transform: scale(1.2);
     color: #FF5480;
+  }
+
+  body.dark .calendar-toggle, body.dark .reset-toggle {
+    color: var(--color-white);
   }
   
   .calendar-container {
@@ -150,7 +163,9 @@
   .calendar-wrapper {
     position: relative;
   }
-  
+  body.dark h2.react-datepicker__current-month {
+    color: var(--color-dark);
+  }
   .events-title-row {
     display: flex;
     justify-content: space-between;
@@ -177,6 +192,6 @@
   .react-datepicker__day--highlighted,
 .highlighted-day {
   background-color: #FF5480;
-  color: white;
+  color: var(--color-white);
   border-radius: 50% !important;
 }

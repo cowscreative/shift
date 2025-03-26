@@ -1,137 +1,928 @@
 // src/data/mockDB.js
 
-export const users = [
+
+  export const users = [
     {
-      id: "user_gibson",
-      name: "Gibson",
-      email: "gibson@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=gibson",
-      bio: "Gibson loves connecting at events and discovering cool new spots.",
-      gender: "male",
-      interestedIn: ["female"],
-      interests: ["coffee", "art", "hiking"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-01T00:00:00"
+      "id": "user_james",
+      "name": "James",
+      "email": "james@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=james",
+      "bio": "James loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "coffee",
+        "music",
+        "creative"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-01T00:00:00",
+      "birthdate": "1984-10-27",
+      "age": 41,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "dating"
     },
     {
-      id: "user_alex",
-      name: "Alex",
-      email: "alex@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=alex",
-      bio: "Alex loves connecting at events and discovering cool new spots.",
-      gender: "female",
-      interestedIn: ["male"],
-      interests: ["hiking", "tech", "music"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-02T00:00:00"
+      "id": "user_john",
+      "name": "John",
+      "email": "john@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=john",
+      "bio": "John loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "tech",
+        "hiking",
+        "music"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-02T00:00:00",
+      "birthdate": "1988-03-01",
+      "age": 37,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "new friends"
     },
     {
-      id: "user_taylor",
-      name: "Taylor",
-      email: "taylor@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=taylor",
-      bio: "Taylor loves connecting at events and discovering cool new spots.",
-      gender: "non-binary",
-      interestedIn: ["female", "male"],
-      interests: ["coffee", "fitness", "tech"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-03T00:00:00"
+      "id": "user_robert",
+      "name": "Robert",
+      "email": "robert@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=robert",
+      "bio": "Robert loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "tech",
+        "outdoors",
+        "photography"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-03T00:00:00",
+      "birthdate": "1994-07-22",
+      "age": 31,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "new friends"
     },
     {
-      id: "user_jordan",
-      name: "Jordan",
-      email: "jordan@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=jordan",
-      bio: "Jordan loves connecting at events and discovering cool new spots.",
-      gender: "male",
-      interestedIn: ["female"],
-      interests: ["fitness", "music", "hiking"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-04T00:00:00"
+      "id": "user_michael",
+      "name": "Michael",
+      "email": "michael@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=michael",
+      "bio": "Michael loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "art",
+        "fitness",
+        "tech"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-04T00:00:00",
+      "birthdate": "1980-06-14",
+      "age": 45,
+      "neighborhood": "East Austin",
+      "lookingFor": "activity partner"
     },
     {
-      id: "user_morgan",
-      name: "Morgan",
-      email: "morgan@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=morgan",
-      bio: "Morgan loves connecting at events and discovering cool new spots.",
-      gender: "female",
-      interestedIn: ["female", "male"],
-      interests: ["music", "coffee", "photography"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-05T00:00:00"
+      "id": "user_william",
+      "name": "William",
+      "email": "william@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=william",
+      "bio": "William loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "fitness",
+        "casual",
+        "music"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-05T00:00:00",
+      "birthdate": "1991-07-15",
+      "age": 34,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "casual hangouts"
     },
     {
-      id: "user_casey",
-      name: "Casey",
-      email: "casey@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=casey",
-      bio: "Casey loves connecting at events and discovering cool new spots.",
-      gender: "female",
-      interestedIn: ["female"],
-      interests: ["tech", "art", "hiking"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-06T00:00:00"
+      "id": "user_david",
+      "name": "David",
+      "email": "david@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=david",
+      "bio": "David loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "outdoors",
+        "creative",
+        "photography"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-06T00:00:00",
+      "birthdate": "1997-09-07",
+      "age": 28,
+      "neighborhood": "Zilker",
+      "lookingFor": "activity partner"
     },
     {
-      id: "user_skyler",
-      name: "Skyler",
-      email: "skyler@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=skyler",
-      bio: "Skyler loves connecting at events and discovering cool new spots.",
-      gender: "non-binary",
-      interestedIn: ["male", "female", "non-binary"],
-      interests: ["art", "coffee", "outdoors"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-07T00:00:00"
+      "id": "user_richard",
+      "name": "Richard",
+      "email": "richard@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=richard",
+      "bio": "Richard loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "casual",
+        "hiking",
+        "coffee"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-07T00:00:00",
+      "birthdate": "1997-06-18",
+      "age": 28,
+      "neighborhood": "Mueller",
+      "lookingFor": "fun experiences"
     },
     {
-      id: "user_jamie",
-      name: "Jamie",
-      email: "jamie@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=jamie",
-      bio: "Jamie loves connecting at events and discovering cool new spots.",
-      gender: "male",
-      interestedIn: ["female", "non-binary"],
-      interests: ["photography", "fitness", "art"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-08T00:00:00"
+      "id": "user_joseph",
+      "name": "Joseph",
+      "email": "joseph@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=joseph",
+      "bio": "Joseph loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "outdoors",
+        "coffee",
+        "fitness"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-08T00:00:00",
+      "birthdate": "1980-12-02",
+      "age": 45,
+      "neighborhood": "Zilker",
+      "lookingFor": "something serious"
     },
     {
-      id: "user_reese",
-      name: "Reese",
-      email: "reese@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=reese",
-      bio: "Reese loves connecting at events and discovering cool new spots.",
-      gender: "female",
-      interestedIn: ["male"],
-      interests: ["casual", "tech", "social"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-09T00:00:00"
+      "id": "user_charles",
+      "name": "Charles",
+      "email": "charles@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=charles",
+      "bio": "Charles loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "outdoors",
+        "casual",
+        "fitness"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-09T00:00:00",
+      "birthdate": "1982-10-11",
+      "age": 43,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "casual hangouts"
     },
     {
-      id: "user_quinn",
-      name: "Quinn",
-      email: "quinn@shift.app",
-      avatar: "https://i.pravatar.cc/150?u=quinn",
-      bio: "Quinn loves connecting at events and discovering cool new spots.",
-      gender: "male",
-      interestedIn: ["male", "female"],
-      interests: ["outdoors", "music", "coffee"],
-      likes: [],
-      matches: [],
-      createdAt: "2024-01-10T00:00:00"
+      "id": "user_thomas",
+      "name": "Thomas",
+      "email": "thomas@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=thomas",
+      "bio": "Thomas loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "art",
+        "outdoors",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-10T00:00:00",
+      "birthdate": "1984-12-09",
+      "age": 41,
+      "neighborhood": "Zilker",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_daniel",
+      "name": "Daniel",
+      "email": "daniel@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=daniel",
+      "bio": "Daniel loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "social",
+        "casual",
+        "photography"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-11T00:00:00",
+      "birthdate": "1988-01-24",
+      "age": 37,
+      "neighborhood": "Zilker",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_matthew",
+      "name": "Matthew",
+      "email": "matthew@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=matthew",
+      "bio": "Matthew loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "creative",
+        "photography",
+        "hiking"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-12T00:00:00",
+      "birthdate": "1996-05-13",
+      "age": 29,
+      "neighborhood": "East Austin",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_anthony",
+      "name": "Anthony",
+      "email": "anthony@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=anthony",
+      "bio": "Anthony loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "fitness",
+        "tech",
+        "creative"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-13T00:00:00",
+      "birthdate": "1987-01-21",
+      "age": 38,
+      "neighborhood": "Mueller",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_mark",
+      "name": "Mark",
+      "email": "mark@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=mark",
+      "bio": "Mark loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "outdoors",
+        "creative",
+        "hiking"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-14T00:00:00",
+      "birthdate": "1996-07-28",
+      "age": 29,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "fun experiences"
+    },
+    {
+      "id": "user_donald",
+      "name": "Donald",
+      "email": "donald@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=donald",
+      "bio": "Donald loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "creative",
+        "casual",
+        "outdoors"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-15T00:00:00",
+      "birthdate": "1996-06-14",
+      "age": 29,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_steven",
+      "name": "Steven",
+      "email": "steven@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=steven",
+      "bio": "Steven loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "creative",
+        "art",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-16T00:00:00",
+      "birthdate": "1984-04-05",
+      "age": 41,
+      "neighborhood": "South Congress",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_paul",
+      "name": "Paul",
+      "email": "paul@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=paul",
+      "bio": "Paul loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "fitness",
+        "photography",
+        "tech"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-17T00:00:00",
+      "birthdate": "1981-09-20",
+      "age": 44,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_andrew",
+      "name": "Andrew",
+      "email": "andrew@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=andrew",
+      "bio": "Andrew loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "tech",
+        "hiking",
+        "social"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-18T00:00:00",
+      "birthdate": "1994-06-11",
+      "age": 31,
+      "neighborhood": "Zilker",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_joshua",
+      "name": "Joshua",
+      "email": "joshua@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=joshua",
+      "bio": "Joshua loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "casual",
+        "coffee",
+        "art"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-19T00:00:00",
+      "birthdate": "1992-10-15",
+      "age": 33,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_kenneth",
+      "name": "Kenneth",
+      "email": "kenneth@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=kenneth",
+      "bio": "Kenneth loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "male",
+      "interestedIn": [
+        "female"
+      ],
+      "interests": [
+        "coffee",
+        "photography",
+        "art"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-20T00:00:00",
+      "birthdate": "1994-11-28",
+      "age": 31,
+      "neighborhood": "Clarksville",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_mary",
+      "name": "Mary",
+      "email": "mary@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=mary",
+      "bio": "Mary loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "coffee",
+        "tech",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-21T00:00:00",
+      "birthdate": "1980-09-05",
+      "age": 45,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_patricia",
+      "name": "Patricia",
+      "email": "patricia@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=patricia",
+      "bio": "Patricia loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "coffee",
+        "creative",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-22T00:00:00",
+      "birthdate": "1992-12-18",
+      "age": 33,
+      "neighborhood": "Zilker",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_linda",
+      "name": "Linda",
+      "email": "linda@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=linda",
+      "bio": "Linda loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "outdoors",
+        "photography",
+        "creative"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-23T00:00:00",
+      "birthdate": "1995-03-23",
+      "age": 30,
+      "neighborhood": "Westlake",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_barbara",
+      "name": "Barbara",
+      "email": "barbara@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=barbara",
+      "bio": "Barbara loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "art",
+        "tech",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-24T00:00:00",
+      "birthdate": "1998-04-22",
+      "age": 27,
+      "neighborhood": "East Austin",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_elizabeth",
+      "name": "Elizabeth",
+      "email": "elizabeth@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=elizabeth",
+      "bio": "Elizabeth loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "art",
+        "tech",
+        "outdoors"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-25T00:00:00",
+      "birthdate": "1991-12-08",
+      "age": 34,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_jennifer",
+      "name": "Jennifer",
+      "email": "jennifer@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=jennifer",
+      "bio": "Jennifer loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "creative",
+        "outdoors",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-26T00:00:00",
+      "birthdate": "1998-11-27",
+      "age": 27,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "fun experiences"
+    },
+    {
+      "id": "user_maria",
+      "name": "Maria",
+      "email": "maria@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=maria",
+      "bio": "Maria loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "hiking",
+        "social",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-27T00:00:00",
+      "birthdate": "1984-12-23",
+      "age": 41,
+      "neighborhood": "East Austin",
+      "lookingFor": "new friends"
+    },
+    {
+      "id": "user_susan",
+      "name": "Susan",
+      "email": "susan@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=susan",
+      "bio": "Susan loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "art",
+        "music",
+        "outdoors"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-28T00:00:00",
+      "birthdate": "1986-03-03",
+      "age": 39,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_margaret",
+      "name": "Margaret",
+      "email": "margaret@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=margaret",
+      "bio": "Margaret loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "creative",
+        "fitness",
+        "hiking"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-29T00:00:00",
+      "birthdate": "1998-07-09",
+      "age": 27,
+      "neighborhood": "Zilker",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_dorothy",
+      "name": "Dorothy",
+      "email": "dorothy@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=dorothy",
+      "bio": "Dorothy loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "casual",
+        "coffee",
+        "outdoors"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-30T00:00:00",
+      "birthdate": "1983-06-28",
+      "age": 42,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_lisa",
+      "name": "Lisa",
+      "email": "lisa@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=lisa",
+      "bio": "Lisa loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "fitness",
+        "tech",
+        "hiking"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-01-31T00:00:00",
+      "birthdate": "1992-08-11",
+      "age": 33,
+      "neighborhood": "Downtown",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_nancy",
+      "name": "Nancy",
+      "email": "nancy@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=nancy",
+      "bio": "Nancy loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "creative",
+        "fitness",
+        "tech"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-01T00:00:00",
+      "birthdate": "1997-02-27",
+      "age": 28,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "activity partner"
+    },
+    {
+      "id": "user_karen",
+      "name": "Karen",
+      "email": "karen@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=karen",
+      "bio": "Karen loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "tech",
+        "casual",
+        "art"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-02T00:00:00",
+      "birthdate": "1979-09-09",
+      "age": 46,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "casual hangouts"
+    },
+    {
+      "id": "user_betty",
+      "name": "Betty",
+      "email": "betty@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=betty",
+      "bio": "Betty loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "music",
+        "coffee",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-03T00:00:00",
+      "birthdate": "1989-08-08",
+      "age": 36,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "new friends"
+    },
+    {
+      "id": "user_helen",
+      "name": "Helen",
+      "email": "helen@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=helen",
+      "bio": "Helen loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "tech",
+        "coffee",
+        "fitness"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-04T00:00:00",
+      "birthdate": "1994-05-18",
+      "age": 31,
+      "neighborhood": "Downtown",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_sandra",
+      "name": "Sandra",
+      "email": "sandra@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=sandra",
+      "bio": "Sandra loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "social",
+        "tech",
+        "art"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-05T00:00:00",
+      "birthdate": "1991-10-15",
+      "age": 34,
+      "neighborhood": "Tarrytown",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_donna",
+      "name": "Donna",
+      "email": "donna@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=donna",
+      "bio": "Donna loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "hiking",
+        "music",
+        "coffee"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-06T00:00:00",
+      "birthdate": "1992-08-13",
+      "age": 33,
+      "neighborhood": "South Congress",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_carol",
+      "name": "Carol",
+      "email": "carol@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=carol",
+      "bio": "Carol loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "outdoors",
+        "coffee",
+        "casual"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-07T00:00:00",
+      "birthdate": "1982-12-06",
+      "age": 43,
+      "neighborhood": "Bouldin Creek",
+      "lookingFor": "something serious"
+    },
+    {
+      "id": "user_ruth",
+      "name": "Ruth",
+      "email": "ruth@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=ruth",
+      "bio": "Ruth loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "hiking",
+        "photography",
+        "music"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-08T00:00:00",
+      "birthdate": "1988-11-13",
+      "age": 37,
+      "neighborhood": "Cherrywood",
+      "lookingFor": "dating"
+    },
+    {
+      "id": "user_sharon",
+      "name": "Sharon",
+      "email": "sharon@shift.app",
+      "avatar": "https://i.pravatar.cc/150?u=sharon",
+      "bio": "Sharon loves connecting at events and discovering cool new spots in Austin.",
+      "gender": "female",
+      "interestedIn": [
+        "male"
+      ],
+      "interests": [
+        "fitness",
+        "music",
+        "tech"
+      ],
+      "likes": [],
+      "matches": [],
+      "createdAt": "2024-02-09T00:00:00",
+      "birthdate": "1980-03-24",
+      "age": 45,
+      "neighborhood": "Mueller",
+      "lookingFor": "casual hangouts"
     }
-  ];  
+  ];
   
   export const likes = [
     {

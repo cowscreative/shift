@@ -59,7 +59,7 @@
   
   .swipe-card p {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--color-dark);
     margin-bottom: 1rem;
   }
   
@@ -84,7 +84,7 @@
   }
   
   .pass-btn {
-    background-color: #f2f2f2;
+    background-color: var(--color-mint);
     color: #333;
   }
   
@@ -285,7 +285,7 @@
   }
 
   body.dark .event-card {
-    background: #333;
-    color: white;
+    background:var(--color-grey);
+    color: var(--color-white);
     border: 0;
   }

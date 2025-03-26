@@ -55,18 +55,16 @@
     gap: 0.4rem;
   }
   
-  .chip {
+  .chip, .going{
     background: var(--color-grey);
     border-radius: 999px;
     padding: 0.3rem 0.75rem;
     font-size: 0.75rem;
     color: var(--color-dark);
-    border: 1px solid #ddd;
   }
   
   .going {
-    font-size: 0.75rem;
-    color: #666;
+    background: var(--color-mint);
     margin-left: auto;
   }
   
@@ -76,6 +74,10 @@
   }
   
   body.dark .event-title {
+    color: var(--color-dark);
+  }
+
+  body.dark .drawer-panel .event-title, body.dark .drawer-panel .event-date {
     color: var(--color-white);
   }
   
@@ -86,10 +88,10 @@
   }
   
   body.dark .going {
-    color: var(--color-mint);
+    color: var(--color-dark);
   }
   
   body.dark .event-date {
-    color: var(--color-mint);
+    color: var(--color-dark);
   }
   

@@ -108,6 +108,7 @@
     margin-top: 0.5rem;
     font-size: 0.85rem;
     line-height: 1.6;
+    color: var(--color-dark);
   }
   body.dark .details-list {
     color: var(--color-white);

@@ -1,8 +1,12 @@
 body.dark .swipe-card, body.dark .swipe-card {
-  background: #333;
-  color: white;
+  background: var(--color-grey);
+  color: var(--color-dark);
 }
 
 .swipe-card {
     padding: 1em;
+}
+
+body.dark .swipe-card h2 {
+    color: var(--color-dark);
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { users } from "../data/mockDB";
 import { motion } from "framer-motion";
 import { FaThLarge, FaBars, FaHeart, FaRedo } from "react-icons/fa";
@@ -20,19 +20,6 @@ function Browse() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [likedIds, setLikedIds] = useState([]);
 
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   useEffect(() => {
     refreshLikes();
   }, []);
@@ -42,14 +29,13 @@ function Browse() {
     if (genderFilter !== "all") result = result.filter((u) => u.gender === genderFilter);
     if (interestFilter !== "") result = result.filter((u) => u.interests.includes(interestFilter));
     setFilteredUsers(result);
-
-    localStorage.setItem("genderFilter", genderFilter);
-    localStorage.setItem("interestFilter", interestFilter);
   }, [genderFilter, interestFilter]);
 
   useEffect(() => {
+    localStorage.setItem("genderFilter", genderFilter);
+    localStorage.setItem("interestFilter", interestFilter);
     localStorage.setItem("viewMode", viewMode);
-  }, [viewMode]);
+  }, [genderFilter, interestFilter, viewMode]);
 
   const refreshLikes = () => {
     const updated = JSON.parse(localStorage.getItem("likedUsers") || "[]");
@@ -59,8 +45,6 @@ function Browse() {
   const resetFilters = () => {
     setGenderFilter("all");
     setInterestFilter("");
-    localStorage.removeItem("genderFilter");
-    localStorage.removeItem("interestFilter");
   };
 
   return (
@@ -77,41 +61,15 @@ function Browse() {
         </div>
       </div>
 
-      <div className="browse-filters" ref={wrapperRef}>
-        <div className="custom-dropdown">
-          <button className="dropdown-toggle" onClick={() => setOpenDropdown(openDropdown === "gender" ? null : "gender")}>
-            {genderFilter.charAt(0).toUpperCase() + genderFilter.slice(1)}
-          </button>
-          {openDropdown === "gender" && (
-            <div className="dropdown-menu">
-              {GENDERS.map((g) => (
-                <div key={g} onClick={() => { setGenderFilter(g); setOpenDropdown(null); }} className="dropdown-item">
-                  {g.charAt(0).toUpperCase() + g.slice(1)}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="custom-dropdown">
-          <button className="dropdown-toggle" onClick={() => setOpenDropdown(openDropdown === "interest" ? null : "interest")}>
-            {interestFilter ? interestFilter : "All interests"}
-          </button>
-          {openDropdown === "interest" && (
-            <div className="dropdown-menu">
-              <div onClick={() => { setInterestFilter(""); setOpenDropdown(null); }} className="dropdown-item">
-                All interests
-              </div>
-              {INTERESTS.map((i) => (
-                <div key={i} onClick={() => { setInterestFilter(i); setOpenDropdown(null); }} className="dropdown-item">
-                  {i.charAt(0).toUpperCase() + i.slice(1)}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <button className="reset-btn" onClick={resetFilters} title="Reset filters">
+      <div className="browse-filters">
+        <select value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)}>
+          {GENDERS.map((g) => <option key={g} value={g}>{g}</option>)}
+        </select>
+        <select value={interestFilter} onChange={(e) => setInterestFilter(e.target.value)}>
+          <option value="">All interests</option>
+          {INTERESTS.map((i) => <option key={i} value={i}>{i}</option>)}
+        </select>
+        <button className="reset-btn" onClick={resetFilters}>
           <FaRedo />
         </button>
       </div>
@@ -139,8 +97,11 @@ function Browse() {
               )}
               <img src={user.avatar} alt={user.name} className="browse-avatar" />
               <div className="browse-info">
-                <h2>{user.name}</h2>
+                <h2>{user.name}, {user.age}</h2>
                 <p>{user.bio}</p>
+                <p className="extra-info">
+                  {user.neighborhood} • {user.lookingFor}
+                </p>
                 <div className="tag-group">
                   {user.interests.map((tag) => (
                     <span className="tag" key={tag}>{tag}</span>
