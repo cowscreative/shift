@@ -1,6 +1,12 @@
-RewriteEngine On
-RewriteBase /workout/
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /workout/index.html [L]
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /shift/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /shift/index.html [L]
+</IfModule>
+
+AddType application/javascript .js
+AddType text/css .css
+AddType application/wasm .wasm

@@ -1,104 +1,136 @@
-// src/Screens/Home.jsx
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import AppButton from "../Components/AppButton";
-import { IoBarbellOutline, IoFitnessOutline } from "react-icons/io5";
-import { motion } from "framer-motion";
-import { getRandomChallenge } from "../data/workouts.js";
-import "react-circular-progressbar/dist/styles.css";
-import "/src/styles/Home.css";
-
-const dailyChallenge = getRandomChallenge();
+// Home.jsx (Enhanced with animations and better UX)
+import { useEffect, useState } from "react";
+import { users, events } from "../data/mockDB";
+import { currentUserId } from "../data/CurrentUser";
+import SwipeCard from "../Components/SwipeCard";
+import EventCard from "../Components/EventCard";
+import PublicProfileDrawer from "../Screens/PublicProfileDrawer";
+import EventDrawer from "../Screens/EventDrawer";
+import MiniProfile from "../Components/MiniProfile";
+import { motion, AnimatePresence } from "framer-motion";
+import "../styles/Home.css";
 
 function Home() {
-    const navigate = useNavigate();
-    const [greeting, setGreeting] = useState("");
-    const [quote, setQuote] = useState("");
-    const [workouts, setWorkouts] = useState([]);
+  const [queue, setQueue] = useState([]);
+  const [person, setPerson] = useState(null);
+  const [likedIds, setLikedIds] = useState([]);
+  const [profileUser, setProfileUser] = useState(null);
+  const [eventList, setEventList] = useState([]);
+  const [checkedInIds, setCheckedInIds] = useState([]);
+  const [eventDrawer, setEventDrawer] = useState(null);
 
-    useEffect(() => {
-        const hour = new Date().getHours();
-        if (hour < 12) setGreeting("Good morning! ☀️");
-        else if (hour < 18) setGreeting("Good afternoon! 🌤️");
-        else setGreeting("Good evening! 🌙");
+  useEffect(() => {
+    const filtered = users.filter((u) => u.id !== currentUserId);
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
+    setQueue(shuffled);
+    setPerson(shuffled[0]);
+    setLikedIds(JSON.parse(localStorage.getItem("likedUsers") || "[]"));
+    setCheckedInIds(JSON.parse(localStorage.getItem("checkedInEvents") || "[]"));
+    setEventList(events);
+  }, []);
 
-        const quotes = [
-            "Push yourself, because no one else will do it for you.",
-            "Sweat today, shine tomorrow.",
-            "Your body can stand almost anything, it's your mind you have to convince.",
-            "Stronger every day."
-        ];
-        setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+  const nextPerson = () => {
+    const rest = queue.slice(1);
+    setQueue(rest);
+    setPerson(rest[0] || null);
+  };
 
-        const lime = getComputedStyle(document.documentElement).getPropertyValue("--color-lime").trim();
+  const likePerson = () => {
+    if (!person) return;
+    const updated = [...likedIds, person.id];
+    setLikedIds(updated);
+    localStorage.setItem("likedUsers", JSON.stringify(updated));
+    localStorage.setItem("hasNewLikes", "true");
+    nextPerson();
+  };
 
-        setWorkouts([
-            { name: "Push", color: lime, filter: "Push" },
-            { name: "Pull", color: lime, filter: "Pull" },
-            { name: "Legs", color: lime, filter: "Legs" },
-            { name: "Full Body", color: lime, filter: "Full Body" }
-        ]);
-    }, []);
+  const toggleCheckin = (eventId) => {
+    const updated = checkedInIds.includes(eventId)
+      ? checkedInIds.filter((id) => id !== eventId)
+      : [...checkedInIds, eventId];
+    setCheckedInIds(updated);
+    localStorage.setItem("checkedInEvents", JSON.stringify(updated));
+    localStorage.setItem("hasNewLikes", "true");
+  };
 
-    return (
-        <motion.div 
-            className="home-container"
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-            {/* Greeting */}
-            <header className="home-header">
-                <h1>{greeting}</h1>
-                <p>{quote}</p>
-            </header>
+  return (
+    <motion.div
+      className="home-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="home-section people">
+  <h1 className="home-title">🔥 Today's Picks</h1>
+  <div className="swipe-stack">
+    {person ? (
+      <SwipeCard
+        user={person}
+        onLike={likePerson}
+        onPass={nextPerson}
+        onProfileClick={setProfileUser}
+      />
+    ) : (
+      <p className="no-more">You've seen everyone for now!</p>
+    )}
+  </div>
+</div>
 
-            {/* Daily Challenge */}
-            <section className="daily-challenge">
-                <h2>💪 Daily Challenge</h2>
-                <p>{dailyChallenge}</p>
-            </section>
 
-            {/* Workout Type Grid */}
-            <motion.section 
-                className="workout-grid"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-            >
-                {workouts.map((workout, index) => (
-                    <motion.div 
-                        key={index} 
-                        className="workout-card"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{ backgroundColor: workout.color }}
-                        onClick={() => navigate(`/workouts?filter=${encodeURIComponent(workout.filter)}`)}
-                    >
-                        <h2>{workout.name}</h2>
-                    </motion.div>
-                ))}
-            </motion.section>
+      {eventList.length > 0 && (
+        <div className="spotlight-section">
+          <h2 className="home-subtitle">🌟 Tonight’s Spotlight</h2>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            <EventCard
+              event={eventList[0]}
+              checkedIn={checkedInIds.includes(eventList[0].id)}
+              onClick={() => setEventDrawer(eventList[0])}
+            />
+          </motion.div>
+        </div>
+      )}
 
-            {/* Action Buttons */}
-            <motion.div 
-                className="quick-actions"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-            >
-                <AppButton className="action-btn" onClick={() => navigate("/workouts")}>
-                    <IoFitnessOutline className="action-icon" />
-                    Start Workout
-                </AppButton>
-                <AppButton className="action-btn secondary" onClick={() => navigate("/stats")}>
-                    <IoBarbellOutline className="action-icon" />
-                    View Stats
-                </AppButton>
-            </motion.div>
-        </motion.div>
-    );
+      <div className="home-section events">
+        <h2 className="home-subtitle">🎉 Upcoming Events</h2>
+        {eventList.length > 1 ? (
+          <motion.div
+            className="event-scroll"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            {eventList.slice(1).map((event) => (
+              <EventCard
+                key={event.id}
+                event={event}
+                checkedIn={checkedInIds.includes(event.id)}
+                onClick={() => setEventDrawer(event)}
+              />
+            ))}
+          </motion.div>
+        ) : (
+          <p className="no-events-text">No upcoming events right now. Check back soon!</p>
+        )}
+      </div>
+
+      {profileUser && (
+        <PublicProfileDrawer user={profileUser} onClose={() => setProfileUser(null)} />
+      )}
+
+      {eventDrawer && (
+        <EventDrawer
+          event={eventDrawer}
+          checkedIn={checkedInIds.includes(eventDrawer.id)}
+          onCheckin={() => toggleCheckin(eventDrawer.id)}
+          onClose={() => setEventDrawer(null)}
+        />
+      )}
+    </motion.div>
+  );
 }
 
 export default Home;

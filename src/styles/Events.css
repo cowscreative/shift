@@ -1,0 +1,182 @@
+.events-container {
+    padding: 1.5rem;
+    padding-bottom: 4rem; /* space for bottom nav if needed */
+  }
+  
+  .events-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .event-tags {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .filter-tag {
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .filter-tag.active {
+    background-color: #FF5480;
+    color: white;
+    border-color: #FF5480;
+  }
+  
+  
+  .no-events {
+    font-size: 0.95rem;
+    color: gray;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  /* Event Card Style */
+  
+  .event-card {
+    display: flex;
+    flex-direction: row; /* ensures horizontal layout */
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    transition: 0.2s ease;
+    cursor: pointer;
+    padding: 1em;
+  }
+  
+  .event-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: .5em;
+    flex-shrink: 0;
+  }
+  
+  .event-info {
+    flex-grow: 1;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }  
+
+  .event-title-row {
+    flex-direction: column;
+  }
+  
+  .event-info h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #111;
+  }
+  
+  .event-info p {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+  
+  .event-info .attendees {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+  
+  .event-chip {
+    display: inline-block;
+    background-color: #f3f4f6;
+    color: #444;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    margin-top: 0.4rem;
+  }
+  
+  .events-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .events-icons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .calendar-toggle,
+  .reset-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #555;
+    padding: 0.3rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .calendar-toggle:hover,
+  .reset-toggle:hover {
+    transform: scale(1.2);
+    color: #FF5480;
+  }
+  
+  .calendar-container {
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .calendar-wrapper {
+    position: relative;
+  }
+  
+  .events-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  
+  .events-icons-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .calendar-popover {
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    z-index: 10;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .react-datepicker__day--highlighted,
+.highlighted-day {
+  background-color: #FF5480;
+  color: white;
+  border-radius: 50% !important;
+}

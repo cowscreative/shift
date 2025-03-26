@@ -1,28 +1,61 @@
-import { Link, useLocation } from "react-router-dom";
-import { AiOutlineHome, AiOutlineLineChart, AiOutlineUser } from "react-icons/ai";
-import { IoBarbellOutline } from "react-icons/io5";
-import "/src/styles/BottomNav.css"; // Import updated styles
+// src/UI/BottomNav.jsx
+import { NavLink, useLocation } from "react-router-dom";
+import {
+  IoHomeOutline,
+  IoCalendarOutline,
+  IoHeartOutline,
+  IoPeopleOutline
+} from "react-icons/io5";
+import { useEffect, useState } from "react";
+import "../styles/BottomNav.css";
 
 function BottomNav() {
-    const location = useLocation();
+  const location = useLocation();
+  const [hasNewLikes, setHasNewLikes] = useState(
+    localStorage.getItem("hasNewLikes") === "true"
+  );
 
-    return (
-        <nav className="bottom-nav">
-            <NavItem to="/" label="Home" icon={<AiOutlineHome />} active={location.pathname === "/"} />
-            <NavItem to="/workouts" label="Workouts" icon={<IoBarbellOutline />} active={location.pathname === "/workouts"} />
-            <NavItem to="/stats" label="Stats" icon={<AiOutlineLineChart />} active={location.pathname === "/stats"} />
-            <NavItem to="/profile" label="Profile" icon={<AiOutlineUser />} active={location.pathname === "/profile"} />
-        </nav>
-    );
-}
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHasNewLikes(localStorage.getItem("hasNewLikes") === "true");
+    }, 1000);
 
-function NavItem({ to, label, icon, active }) {
-    return (
-        <Link to={to} className={`nav-item ${active ? "active" : ""}`}>
-            {icon}
-            <span>{label}</span>
-        </Link>
-    );
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname === "/likes") {
+      localStorage.setItem("hasNewLikes", "false");
+      setHasNewLikes(false);
+    }
+  }, [location.pathname]);
+
+  return (
+    <nav className="bottom-nav">
+      <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+        <IoHomeOutline />
+        <span className="nav-label">Home</span>
+      </NavLink>
+
+      <NavLink to="/events" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+        <IoCalendarOutline />
+        <span className="nav-label">Events</span>
+      </NavLink>
+
+      <NavLink to="/browse" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+        <IoPeopleOutline />
+        <span className="nav-label">Browse</span>
+      </NavLink>
+
+      <div className="nav-like-wrapper">
+        <NavLink to="/likes" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+          <IoHeartOutline />
+          <span className="nav-label">Likes</span>
+        </NavLink>
+        {hasNewLikes && <span className="notif-dot" />}
+      </div>
+    </nav>
+  );
 }
 
 export default BottomNav;

@@ -1,0 +1,8 @@
+body.dark .swipe-card, body.dark .swipe-card {
+  background: #333;
+  color: white;
+}
+
+.swipe-card {
+    padding: 1em;
+}

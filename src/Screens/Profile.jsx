@@ -1,89 +1,111 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
-import { clearWorkoutLogs } from "/src/utils/storage.js";
-import "/src/styles/Profile.css";
+// src/Screens/Profile.jsx
+import { useEffect, useState } from "react";
+import { IoPencilOutline, IoTrashOutline } from "react-icons/io5";
+import { currentUserId } from "../data/CurrentUser";
+import { users } from "../data/mockDB";
+import "../styles/Profile.css";
 
 function Profile() {
-    const [user] = useState({
-        email: "gibson@cowscreative.com",
-        user_metadata: {
-            name: "Gibson",
-            avatar_url: "./img/profile.png"
-        }
-    });
+  const currentUser = users.find((u) => u.id === currentUserId);
 
-    const navigate = useNavigate();
+  const defaultData = {
+    name: currentUser?.name || "Your Name",
+    bio: currentUser?.bio || "",
+    email: currentUser?.email || "",
+    photo: currentUser?.avatar || ""
+  };
 
-    return (
-        <motion.div 
-            className="profile-container"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-            <h1>Howdy {user.user_metadata?.name}</h1>
+  const [data, setData] = useState(defaultData);
+  const [editing, setEditing] = useState({});
 
-            <motion.header className="profile-header"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-            >
-                <motion.img 
-                    src={user.user_metadata.avatar_url}
-                    alt="Profile"
-                    className="profile-pic"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                />
-                <p>{user.email}</p>
-            </motion.header>
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("userProfile"));
+    if (saved) setData(saved);
+  }, []);
 
-            <motion.div 
-                className="profile-actions"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-            >
-                <motion.button 
-                    className="profile-btn"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => navigate("/settings")}
-                >
-                    <IoSettingsOutline className="action-icon" />
-                    Settings
-                </motion.button>
+  const updateField = (key, value) => {
+    const updated = { ...data, [key]: value };
+    setData(updated);
+    localStorage.setItem("userProfile", JSON.stringify(updated));
+  };
 
-                <motion.button 
-                    className="profile-btn logout"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => alert("Logout is disabled in dev mode")}
-                >
-                    <IoLogOutOutline className="action-icon" />
-                    Logout
-                </motion.button>
+  const toggleDarkMode = () => {
+    const current = localStorage.getItem("darkMode") === "true";
+    const newValue = !current;
+    localStorage.setItem("darkMode", newValue);
+    window.location.reload(); // let App.jsx reapply dark mode
+  };
 
-                <motion.button 
-                    className="profile-btn danger"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                        if (confirm("Are you sure you want to clear all stats? This cannot be undone.")) {
-                            clearWorkoutLogs();
-                            alert("Stats cleared!");
-                            window.location.reload();
-                        }
-                    }}
-                >
-                    🗑️ Clear Stats
-                </motion.button>
-            </motion.div>
-        </motion.div>
-    );
+  const clearCache = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  return (
+    <div className="profile-container">
+      <div className="profile-photo-block">
+        <img src={data.photo} alt="User avatar" className="profile-photo" />
+        <div className="photo-input">
+          <IoPencilOutline className="edit-icon" />
+          <input
+            type="text"
+            value={data.photo}
+            onChange={(e) => updateField("photo", e.target.value)}
+            placeholder="Paste image URL"
+          />
+        </div>
+      </div>
+
+      <div className="profile-field">
+        <span>Name:</span>
+        {editing.name ? (
+          <input
+            value={data.name}
+            onChange={(e) => updateField("name", e.target.value)}
+            onBlur={() => setEditing({ ...editing, name: false })}
+            autoFocus
+          />
+        ) : (
+          <div onClick={() => setEditing({ ...editing, name: true })}>
+            {data.name} <IoPencilOutline className="icon-inline" />
+          </div>
+        )}
+      </div>
+
+      <div className="profile-field">
+        <span>Bio:</span>
+        {editing.bio ? (
+          <textarea
+            value={data.bio}
+            onChange={(e) => updateField("bio", e.target.value)}
+            onBlur={() => setEditing({ ...editing, bio: false })}
+            autoFocus
+          />
+        ) : (
+          <div onClick={() => setEditing({ ...editing, bio: true })}>
+            {data.bio} <IoPencilOutline className="icon-inline" />
+          </div>
+        )}
+      </div>
+
+      <div className="profile-field toggle-row">
+        <span>Dark Mode</span>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={localStorage.getItem("darkMode") === "true"}
+            onChange={toggleDarkMode}
+          />
+          <span className="slider"></span>
+        </label>
+      </div>
+
+      <button onClick={clearCache} className="clear-btn">
+        <IoTrashOutline className="icon-inline" />
+        Clear Cache
+      </button>
+    </div>
+  );
 }
 
 export default Profile;

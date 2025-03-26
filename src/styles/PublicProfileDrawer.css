@@ -1,0 +1,136 @@
+/* Backdrop + Animations */
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 50;
+    animation: fadeIn 0.25s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { background: rgba(0, 0, 0, 0); }
+    to { background: rgba(0, 0, 0, 0.4); }
+  }
+  
+  /* Drawer Panel */
+  .drawer-panel {
+    width: 100%;
+    max-height: 90%;
+    background: #fff;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    padding: 1.5rem 1.25rem 2rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+    position: relative;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  
+  /* Close Button */
+  .drawer-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  /* Header (Image, Name, Heart) */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .drawer-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid #eee;
+  }
+  
+  .header-text h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  
+  .gender-subtext {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 0.25rem;
+  }
+  
+  .like-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  /* Drawer Content */
+  .drawer-content {
+    margin-top: 1rem;
+  }
+  
+  .section {
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+  
+  .section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-bio {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+  }
+  
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  
+  .tag {
+    font-size: 0.7rem;
+    background: #f4f4f4;
+    color: #333;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+  }
+  
+  .details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  

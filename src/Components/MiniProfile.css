@@ -1,0 +1,68 @@
+.mini-profile {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    padding: 1em;
+    text-align: right;
+  }
+  
+  .mini-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 2px solid #eee;
+  }
+  
+  .greeting {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+  }
+  
+  .user-name {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .spotlight-section {
+    margin: 1rem 1rem 2rem;
+  }
+  
+  .spotlight-card {
+    display: flex;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .app-header button {
+    background: initial;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+  
+  .spotlight-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+  
+  .spotlight-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .spotlight-info p {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: gray;
+  }
+  

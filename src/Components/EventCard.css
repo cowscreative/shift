@@ -1,0 +1,95 @@
+/* EventCard.css */
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 280px;
+    max-width: 100%;
+  }
+  
+  .event-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .event-title-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .event-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
+  }
+  
+  .event-date {
+    font-size: 0.85rem;
+    color: gray;
+    white-space: nowrap;
+  }
+  
+  .event-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .chip {
+    background: var(--color-grey);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-dark);
+    border: 1px solid #ddd;
+  }
+  
+  .going {
+    font-size: 0.75rem;
+    color: #666;
+    margin-left: auto;
+  }
+  
+  /* Dark mode compatibility */
+  body.dark .event-card {
+    background: var(--color-dark);
+  }
+  
+  body.dark .event-title {
+    color: var(--color-white);
+  }
+  
+  body.dark .chip {
+    background: var(--color-mint);
+    color: var(--color-dark);
+    border: 1px solid var(--color-mint);
+  }
+  
+  body.dark .going {
+    color: var(--color-mint);
+  }
+  
+  body.dark .event-date {
+    color: var(--color-mint);
+  }
+  
