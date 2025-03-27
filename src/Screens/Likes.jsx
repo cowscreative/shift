@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { users, events } from "../data/mockDB";
+import { users } from "../data/mockDB";
+import { events } from "../data/updatedEvents";
 import EventDrawer from "../Screens/EventDrawer";
 import PublicProfileDrawer from "../Screens/PublicProfileDrawer";
 import { motion, AnimatePresence } from "framer-motion";

@@ -31,7 +31,7 @@ function BottomNav() {
   }, [location.pathname]);
 
   return (
-    <nav className="bottom-nav">
+  <nav className="bottom-nav">
       <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <IoHomeOutline />
         <span className="nav-label">Home</span>
@@ -42,18 +42,19 @@ function BottomNav() {
         <span className="nav-label">Events</span>
       </NavLink>
 
-      <NavLink to="/browse" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+     <NavLink to="/browse" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <IoPeopleOutline />
         <span className="nav-label">Browse</span>
-      </NavLink>
+      </NavLink> 
 
-      <div className="nav-like-wrapper">
-        <NavLink to="/likes" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-          <IoHeartOutline />
-          <span className="nav-label">Likes</span>
-        </NavLink>
-        {hasNewLikes && <span className="notif-dot" />}
-      </div>
+      <NavLink to="/likes" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+  <div className="nav-like-wrapper">
+    <IoHeartOutline />
+    {hasNewLikes && <span className="notif-dot" />}
+  </div>
+  <span className="nav-label">Likes</span>
+</NavLink>
+
     </nav>
   );
 }

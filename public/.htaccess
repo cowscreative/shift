@@ -1,10 +1,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /shift/
+  RewriteBase /cactus/
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /shift/index.html [L]
+  RewriteRule . /cactus/index.html [L]
 </IfModule>
 
 AddType application/javascript .js

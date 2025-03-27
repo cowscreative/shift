@@ -6,9 +6,10 @@ function Loader() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "instant" }); // 👈 Force scroll at exact moment loader clears
+      window.scrollTo({ top: 0, behavior: "instant" });
       setHide(true);
-    }, 1000);
+      sessionStorage.setItem("hideLoader", "true"); // prevent it from showing again
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -17,9 +18,9 @@ function Loader() {
 
   return (
     <div className="site-loader">
-      <div className="loader-circle" />
-      <h1 className="loader-title">SHIFT</h1>
-      <p className="loader-sub">Find your person, in real life.</p>
+      <img src="https://cows.host/cactus/img/cactus-loader.png" alt="Loading cactus" className="loader-img" />
+      <h1 className="loader-title">Don’t be a prick</h1>
+      <p className="loader-sub">Loading your experience</p>
     </div>
   );
 }

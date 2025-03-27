@@ -5,27 +5,27 @@ import { VitePWA } from 'vite-plugin-pwa';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  base: isProd ? '/shift/' : '/',
+  base: isProd ? '/cactus/' : '/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Shift',
-        short_name: 'Shift',
-        start_url: isProd ? '/shift/' : '/',
-        scope: isProd ? '/shift/' : '/',
+        name: 'Cactus',
+        short_name: 'Cactus',
+        start_url: isProd ? '/cactus/' : '/',
+        scope: isProd ? '/cactus/' : '/',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#FF5480',
+        theme_color: '#B9EF44',
         icons: [
           {
-            src: isProd ? '/shift/icon-192.png' : '/icon-192.png',
+            src: isProd ? '/cactus/icon-192.png' : '/icon-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: isProd ? '/shift/icon-512.png' : '/icon-512.png',
+            src: isProd ? '/cactus/icon-512.png' : '/icon-512.png',
             sizes: '512x512',
             type: 'image/png'
           }

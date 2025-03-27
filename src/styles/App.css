@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+@font-face {
+  font-family: 'TAYRosemary';
+  src: url('/fonts/TAYRosemary.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 :root {
   --color-lime:   #BCF246;
@@ -12,7 +19,10 @@
   --primary:      var(--color-rich);
   --accent:       var(--color-lime);
 
-  --font-primary: 'Inter', sans-serif;
+  --font-primary: 'TAYRosemary', sans-serif;
+  --font-display: 'Pattaya', sans-serif;
+
+  --font-primary: 'Bebas Neue', sans-serif;
   --font-display: 'Bebas Neue', sans-serif;
 }
 
@@ -22,6 +32,7 @@ body.dark {
   --primary:      var(--color-dark);
   --accent:       var(--color-mint);
 }
+
 
 /* ============================= */
 /* ✅ GLOBAL STYLES */

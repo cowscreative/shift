@@ -32,10 +32,11 @@ function PublicProfileDrawer({ user, onClose, onLikeChange }) {
   return (
     <div className="drawer-backdrop" onClick={onClose}>
       <div className="drawer-panel" onClick={(e) => e.stopPropagation()}>
-        <button className="drawer-close" onClick={onClose}>
-          <IoCloseOutline size={24} />
-        </button>
-
+      <div className="drawer-header">
+          <button className="icon-btn" onClick={onClose}>
+            <IoCloseOutline size={26} />
+          </button>
+        </div>
         <div className="profile-header">
           <img src={user.avatar} alt={user.name} className="drawer-avatar" />
           <div className="header-text">

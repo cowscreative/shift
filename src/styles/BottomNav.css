@@ -6,25 +6,32 @@
   height: 64px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch; /* Stretch children to full height */
   border-top: 1px solid var(--color-mint);
-  background-color:var(--color-white);
+  background-color: var(--color-white);
   z-index: 2;
 }
+
 
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-size: 1.25rem;
   color: var(--color-dark);
   text-decoration: none;
   transition: color 0.2s ease;
+  padding: 10px 0; /* Add vertical padding */
+  flex: 1; /* Each item takes equal width space */
+  height: 100%; /* Full height of bottom nav */
 }
 
+
 .nav-item .nav-label {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   margin-top: 0.1rem;
+  letter-spacing: 1px;
 }
 
 .nav-item.active {

@@ -28,6 +28,10 @@ function Browse() {
     let result = users.filter((u) => u.id !== currentUserId);
     if (genderFilter !== "all") result = result.filter((u) => u.gender === genderFilter);
     if (interestFilter !== "") result = result.filter((u) => u.interests.includes(interestFilter));
+
+    // Shuffle the filtered result
+    result = result.sort(() => 0.5 - Math.random());
+
     setFilteredUsers(result);
   }, [genderFilter, interestFilter]);
 
@@ -98,7 +102,6 @@ function Browse() {
               <img src={user.avatar} alt={user.name} className="browse-avatar" />
               <div className="browse-info">
                 <h2>{user.name}, {user.age}</h2>
-                <p>{/*user.bio*/}</p>
                 <p className="extra-info">
                   {user.neighborhood} • {user.lookingFor}
                 </p>

@@ -9,13 +9,14 @@ import BottomNav from "./UI/BottomNav";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
 import MiniProfile from "./Components/MiniProfile";
 import Loader from "./Components/Loader";
+import AddToHomeScreenPrompt from "./Components/AddToHomeScreenPrompt";
 import { IoChevronBackOutline } from "react-icons/io5";
 import "/src/styles/App.css";
 
 function Header() {
   const location = useLocation();
   const navigate = useNavigate();
-  const showBackButton = location.pathname !== "/" && location.pathname !== "/shift";
+  const showBackButton = location.pathname !== "/" && location.pathname !== "/cactus";
 
   return (
     <header className="app-header">
@@ -26,7 +27,7 @@ function Header() {
           </button>
         )}
         <h1 className="app-logo" onClick={() => navigate(".", { replace: true })}>
-          SHIFT
+          Cactus
         </h1>
       </div>
       <button className="header-btn settings-btn" onClick={() => navigate("/profile")}>
@@ -37,6 +38,8 @@ function Header() {
 }
 
 function App() {
+  const location = useLocation();
+
   useEffect(() => {
     const hour = new Date().getHours();
     const autoDark = hour < 6 || hour >= 18;
@@ -45,9 +48,11 @@ function App() {
     document.body.classList.toggle("dark", isDark);
   }, []);
 
+  const showLoader = location.pathname === "/" || location.pathname === "/cactus";
+
   return (
     <>
-      <Loader />
+      {showLoader && <Loader />}
       <Header />
       <ScrollToTop />
       <div className="container">
@@ -60,6 +65,7 @@ function App() {
         </Routes>
       </div>
       <BottomNav />
+      <AddToHomeScreenPrompt />
     </>
   );
 }

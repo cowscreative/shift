@@ -25,6 +25,10 @@
     animation-delay: 0.9s;
     flex-direction: column;
   }
+
+  body.dark .site-loader {
+    background: var(--color-dark);
+  } 
   
   .loader-circle {
     width: 40px;

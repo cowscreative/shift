@@ -25,9 +25,13 @@ function EventCard({ event, checkedIn, onClick }) {
 
         <div className="event-tags-row">
           {event.tags.map((tag) => (
-            <span className="chip" key={tag}>{tag}</span>
+            <span className="chip" key={tag}>
+              {tag.replace(/-/g, " ")}
+            </span>
           ))}
-          <span className="going">{event.attendees.length} going</span>
+          {typeof event.capacity === "number" && event.capacity > 0 && (
+            <span className="going">{event.capacity} going</span>
+          )}
         </div>
       </div>
     </div>

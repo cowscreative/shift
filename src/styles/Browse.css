@@ -87,13 +87,19 @@
   }
   
   .browse-avatar {
-    width: 72px;
-    height: 72px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 50%;
     border: 2px solid var(--color-grey);
     margin-bottom: 0.5rem;
   }
+
+  .browse-avatar {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  
   
   .browse-card.row .browse-avatar {
     margin-bottom: 0;
@@ -125,7 +131,7 @@
   }
   
   .tag {
-    font-size: 0.5rem;
+    font-size: 0.85rem;
     background: var(--color-mint);
     color: var(--color-dark);
     padding: 0.2rem 0.5rem;

@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { events as allEvents } from "../data/updatedEvents"; // use your new local file
+import { useLocation } from "react-router-dom";
+import { events as allEvents } from "../data/updatedEvents";
 import EventCard from "../Components/EventCard";
 import EventDrawer from "../Screens/EventDrawer";
 import DatePicker from "react-datepicker";
@@ -8,7 +9,11 @@ import { FaCalendarAlt, FaRedo } from "react-icons/fa";
 import "../styles/Events.css";
 
 function Events() {
-  const [filter, setFilter] = useState("all");
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const categoryFromUrl = params.get("category");
+
+  const [filter, setFilter] = useState(categoryFromUrl || "all");
   const [events, setEvents] = useState([]);
   const [eventDrawer, setEventDrawer] = useState(null);
   const [checkedInIds, setCheckedInIds] = useState(
@@ -19,14 +24,16 @@ function Events() {
   const calendarRef = useRef(null);
 
   useEffect(() => {
+    const now = new Date();
     const filtered = allEvents.filter((event) => {
-      const eventDate = new Date(event.date).toDateString();
+      const eventDate = new Date(event.date);
+      const isFuture = eventDate >= new Date(now.toDateString()); // strip time, compare date only
       const matchFilter =
         filter === "all" || event.tags?.includes(filter) || event.category === filter;
       const matchDate =
         !selectedDate ||
-        new Date(event.date).toDateString() === selectedDate.toDateString();
-      return matchFilter && matchDate;
+        eventDate.toDateString() === selectedDate.toDateString();
+      return isFuture && matchFilter && matchDate;
     });
     setEvents(filtered);
   }, [filter, selectedDate]);
@@ -105,17 +112,29 @@ function Events() {
       </div>
 
       <div className="event-tags">
-        {["all", "comedy", "live-music", "dj-s-parties", "food-drink", "fitness-health", "drag", "free", "exhibit", "sports-activities", "community-local", "variety-other", "lgbtq"].map(
-          (tag) => (
-            <button
-              key={tag}
-              className={`filter-tag ${filter === tag ? "active" : ""}`}
-              onClick={() => setFilter(tag)}
-            >
-              {tag}
-            </button>
-          )
-        )}
+      {[
+  "all",
+  "comedy",
+  "live-music",
+  "dj-s-parties",
+  "food-drink",
+  "fitness-health",
+  "drag",
+  "free",
+  "exhibit",
+  "sports-activities",
+  "community-local",
+  "variety-other",
+  "lgbtq"
+].map((tag) => (
+  <button
+    key={tag}
+    className={`filter-tag ${filter === tag ? "active" : ""}`}
+    onClick={() => setFilter(tag)}
+  >
+    {tag.replace(/-/g, " ")}
+  </button>
+))}
       </div>
 
       <div className="event-list">

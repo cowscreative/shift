@@ -1,13 +1,12 @@
-// Home.jsx (Enhanced with animations and better UX)
 import { useEffect, useState } from "react";
-import { users, events } from "../data/mockDB";
+import { users } from "../data/mockDB";
+import { events } from "../data/updatedEvents";
 import { currentUserId } from "../data/CurrentUser";
 import SwipeCard from "../Components/SwipeCard";
 import EventCard from "../Components/EventCard";
 import PublicProfileDrawer from "../Screens/PublicProfileDrawer";
 import EventDrawer from "../Screens/EventDrawer";
 import MiniProfile from "../Components/MiniProfile";
-import { motion, AnimatePresence } from "framer-motion";
 import "../styles/Home.css";
 
 function Home() {
@@ -18,15 +17,22 @@ function Home() {
   const [eventList, setEventList] = useState([]);
   const [checkedInIds, setCheckedInIds] = useState([]);
   const [eventDrawer, setEventDrawer] = useState(null);
+  const [featuredMembers, setFeaturedMembers] = useState([]);
 
   useEffect(() => {
-    const filtered = users.filter((u) => u.id !== currentUserId);
-    const shuffled = filtered.sort(() => Math.random() - 0.5);
-    setQueue(shuffled);
-    setPerson(shuffled[0]);
+    const filteredUsers = users.filter((u) => u.id !== currentUserId);
+    const shuffledUsers = filteredUsers.sort(() => Math.random() - 0.5);
+    setQueue(shuffledUsers);
+    setPerson(shuffledUsers[0]);
+    setFeaturedMembers(shuffledUsers.slice(0, 10));
     setLikedIds(JSON.parse(localStorage.getItem("likedUsers") || "[]"));
     setCheckedInIds(JSON.parse(localStorage.getItem("checkedInEvents") || "[]"));
-    setEventList(events);
+
+    const now = new Date();
+    const futureEvents = events
+      .filter((e) => e.start && new Date(e.start) > now)
+      .sort((a, b) => (b.capacity || 0) - (a.capacity || 0));
+    setEventList(futureEvents);
   }, []);
 
   const nextPerson = () => {
@@ -53,57 +59,91 @@ function Home() {
     localStorage.setItem("hasNewLikes", "true");
   };
 
+  const spotlightEvent = eventList.find((e) => e.capacity > 0);
+  const upcomingEvents = eventList.filter((e) => e.capacity > 0).slice(1, 11);
+
+  const categories = [
+    { label: "Comedy", slug: "comedy", emoji: "🎤" },
+    { label: "Live Music", slug: "live-music", emoji: "🎸" },
+    { label: "DJ & Parties", slug: "dj-s-parties", emoji: "🎧" },
+    { label: "Food & Drink", slug: "food-drink", emoji: "🍸" },
+    { label: "Fitness & Health", slug: "fitness-health", emoji: "💪" },
+    { label: "Drag", slug: "drag", emoji: "💄" },
+    { label: "Free", slug: "free", emoji: "🆓" },
+    { label: "Exhibit", slug: "exhibit", emoji: "🖼️" },
+    { label: "Sports", slug: "sports-activities", emoji: "🏀" },
+    { label: "Community", slug: "community-local", emoji: "🏡" },
+    { label: "Variety", slug: "variety-other", emoji: "🌀" },
+    { label: "LGBTQ+", slug: "lgbtq", emoji: "🏳️‍🌈" }
+  ];
+
+  const featuredCategories = ["comedy", "live-music", "fitness-health", "free"];
+
+  const getEventsForCategory = (slug) => {
+    const now = new Date();
+    return eventList
+      .filter(
+        (e) =>
+          e.capacity > 0 &&
+          new Date(e.start) > now &&
+          (e.category === slug || e.tags?.includes(slug))
+      )
+      .slice(0, 10);
+  };
+
   return (
-    <motion.div
-      className="home-container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="home-container">
       <div className="home-section people">
-  <h1 className="home-title">🔥 Today's Picks</h1>
-  <div className="swipe-stack">
-    {person ? (
-      <SwipeCard
-        user={person}
-        onLike={likePerson}
-        onPass={nextPerson}
-        onProfileClick={setProfileUser}
-      />
-    ) : (
-      <p className="no-more">You've seen everyone for now!</p>
-    )}
-  </div>
-</div>
-
-
-      {eventList.length > 0 && (
-        <div className="spotlight-section">
-          <h2 className="home-subtitle">🌟 Tonight’s Spotlight</h2>
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            <EventCard
-              event={eventList[0]}
-              checkedIn={checkedInIds.includes(eventList[0].id)}
-              onClick={() => setEventDrawer(eventList[0])}
+        <h1 className="home-title">Meet someone new</h1>
+        <div className="swipe-stack">
+          {person ? (
+            <SwipeCard
+              user={person}
+              onLike={likePerson}
+              onPass={nextPerson}
+              onProfileClick={setProfileUser}
             />
-          </motion.div>
+          ) : (
+            <p className="no-more">You've seen everyone for now!</p>
+          )}
+        </div>
+      </div>
+
+      {spotlightEvent && (
+        <div className="spotlight-section">
+          <h2 className="home-subtitle">Spotlight Event</h2>
+          <EventCard
+            event={spotlightEvent}
+            checkedIn={checkedInIds.includes(spotlightEvent.id)}
+            onClick={() => setEventDrawer(spotlightEvent)}
+          />
         </div>
       )}
 
-      <div className="home-section events">
-        <h2 className="home-subtitle">🎉 Upcoming Events</h2>
-        {eventList.length > 1 ? (
-          <motion.div
-            className="event-scroll"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {eventList.slice(1).map((event) => (
+
+    {featuredMembers.length > 0 && (
+        <div className="home-section featured-members">
+          <h2 className="home-subtitle">🌟 Featured Members</h2>
+          <div className="profile-scroll">
+            {featuredMembers.map((user) => (
+              <div
+                key={user.id}
+                className="profile-circle"
+                onClick={() => setProfileUser(user)}
+              >
+                <img src={user.avatar} alt={user.name} className="avatar-img" />
+                <span className="avatar-name">{user.name.split(" ")[0]}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {upcomingEvents.length > 0 && (
+        <div className="home-section events">
+          <h2 className="home-subtitle">Popular Events</h2>
+          <div className="event-scroll">
+            {upcomingEvents.map((event) => (
               <EventCard
                 key={event.id}
                 event={event}
@@ -111,10 +151,66 @@ function Home() {
                 onClick={() => setEventDrawer(event)}
               />
             ))}
-          </motion.div>
-        ) : (
-          <p className="no-events-text">No upcoming events right now. Check back soon!</p>
-        )}
+          </div>
+        </div>
+      )}
+
+      <div className="home-section categories">
+        <h2 className="home-subtitle">Explore by Category</h2>
+        <div className="category-grid">
+          {categories.map((cat) => (
+            <a
+              key={cat.slug}
+              href={`/cactus/events?category=${cat.slug}`}
+              className="category-block"
+            >
+              <div className="emoji">{cat.emoji}</div>
+              <div className="label">{cat.label}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {featuredCategories.map((slug) => {
+        const matchingCategory = categories.find((c) => c.slug === slug);
+        const label = matchingCategory?.label || slug;
+        const events = getEventsForCategory(slug);
+
+        return (
+          events.length > 0 && (
+            <div className="home-section events" key={slug}>
+              <div className="home-subtitle-row">
+                <h2 className="home-subtitle">{label} Events</h2>
+                <a
+                  className="view-all-link"
+                  href={`/cactus/events?category=${slug}`}
+                >
+                  → View all {label.toLowerCase()} events
+                </a>
+              </div>
+
+              <div className="event-scroll">
+                {events.map((event) => (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    checkedIn={checkedInIds.includes(event.id)}
+                    onClick={() => setEventDrawer(event)}
+                  />
+                ))}
+              </div>
+            </div>
+          )
+        );
+      })}
+
+      <div className="cactus-footer">
+        <p className="footer-cactus-text">Welcome to the club</p>
+        <img
+          src="https://cows.host/cactus/img/cactus-loader.png"
+          alt="Don't be a prick"
+          className="footer-cactus-img"
+        />
       </div>
 
       {profileUser && (
@@ -129,7 +225,7 @@ function Home() {
           onClose={() => setEventDrawer(null)}
         />
       )}
-    </motion.div>
+    </div>
   );
 }
 
